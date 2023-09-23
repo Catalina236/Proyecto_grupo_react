@@ -15,8 +15,8 @@ function App() {
   const[direccion,setDireccion]=useState("");
   const[cod_usuario, setCodigo]=useState("");
   const[nom_tipo_usuario,setTipoUsuario]=useState("");
-    //const[editar,setEditar]=useState(false);
-
+  const[editar,setEditar]=useState(false);
+    
   const add=()=>{
     Axios.post("http://localhost:3001/create",{
       correo_electronico:correo_electronico,
@@ -31,7 +31,7 @@ function App() {
       cod_usuario:cod_usuario
     }).then(()=>{
       listar();
-      //clear();
+      clear();
       Swal.fire({
         title:"<strong> Registro exitoso!!!</strong>",
         html:"<i>El usuario "+nombres+" </strong> fue registrado con éxito!!!</i>",
@@ -47,7 +47,37 @@ function App() {
     });
 
   }
+
+  const update=()=>{
+    Axios.put("http://localhost:3001/update",{
+      num_doc:num_doc,
+      tipo_doc:tipo_doc,
+      nombres:nombres,
+      apellidos:apellidos,
+      correo_electronico:correo_electronico,
+      telefono:telefono,
+      direccion:direccion,
+      cod_usuario:cod_usuario
+  }).then(()=>{
+    listar();
+    clear();
+    Swal.fire({
+      title:"<strong> Actualización exitosa!!!</strong>",
+      html:"<i>El usuario "+nombres+" </strong> fue actualizado con éxito!!!</i>",
+      icon:"success",
+      timer:3000
+    })
+  }).catch(function(error){
+    Swal.fire({
+      icon:'error',
+      title:'Ooops....',
+      text:JSON.parse(JSON.stringify(error)).message==="Network Error"?"Intente más tarde":JSON.parse(JSON.stringify(error)).message
+    })
+  });
+
+}
   const editarUsuario=(val)=>{
+    setEditar(true);
     setNumDoc(val.num_doc);
     setTipo_doc(val.tipo_doc);
     setNombres(val.nombres);
@@ -91,7 +121,7 @@ function App() {
     }).then((result)=>{
       if(result.isConfirmed){
         Axios.delete(`http://localhost:3001/delete/${val.correo_electronico}`).then((res)=>{
-          //listar();
+          listar();
           //clear();
           Swal.fire({
             icon:'success',
@@ -202,12 +232,13 @@ function App() {
                 </div>
                 </div>
             <div className='card-footer text-muted' style={{backgroundColor:'white'}}>
-              
+              {editar?
                 <div>
-                  <button className='btn btn-warning m-2'>Actualizar</button>
+                  <button className='btn btn-warning m-2' onClick={update}>Actualizar</button>
                   <button className='btn btn-info m-2' onClick={clear}>Limpiar</button>
                 </div>
-                  <button className='btn btn-success'onClick={add} style={{height:'39px',marginTop:'7px'}}>Registrar</button>
+                  :<button className='btn btn-success'onClick={add} style={{height:'39px',marginTop:'7px'}}>Registrar</button>
+              }
             
                   <button className='btn btn-secondary' style={{height:'39px',marginTop:'7px'}} onClick={listar}>Ver datos</button>
             </div>
@@ -216,7 +247,7 @@ function App() {
         <div className='lista'>
         <table className='table table-striped'>
           <thead>
-            <tr>
+            <tr>  
               <th scope='col'>Número de documento</th>
               <th scope='col'>Tipo de documento</th>
               <th scope='col'>Nombres</th>
