@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family:'Monserrat', sans-serif;
+}
+.App{
+  text-align: center;
+}
+.card{
+  margin-top: 50px;
+  width: 71vw;
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(transparent, black);
+  background-size: cover;
+}
+.card-header{
+  font-size: calc(40px + 2vmin);
+  color: white(241,241,241);
+}
+.formulario{
+  background-color: aliceblue;
+  width: 40vw;
+  margin-left: 250px;
+  padding-left: 250px;
+  padding-right: 40px;
+  color: black;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.btn-secondary{
+  margin-left: 20px;
+}
+.formulario h3{
+  color: blue;
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+  margin: 20px;
+}
+.formulario .info{
+  margin-bottom: 20px;
+}
+.info label{
+  display: block;
+  color: blue;
+  font-weight: bold;
+  text-align: left;
+}
+.info input{
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+  outline: none;
+  background-color: beige;
+}
+.lista{
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
