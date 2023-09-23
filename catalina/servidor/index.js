@@ -80,7 +80,7 @@ app.delete("/delete/:correo_electronico", (req,res)=>{
     });
 }
 );
-app.update("/update",(req,res)=>{
+app.put("/update",(req,res)=>{
     const num_doc=req.body.num_doc;
     const tipo_doc = req.body.tipo_doc;
     const nombres = req.body.nombres;
@@ -90,7 +90,7 @@ app.update("/update",(req,res)=>{
     const direccion = req.body.direccion;
     const cod_usuario=req.body.cod_usuario;
     db.query(
-        'UPDATE persona SET num_doc=?,tipo_doc=?,nombres=?,apellidos=?,correo_electronico=?,telefono=?,direccion=?,cod_usuario=? WHERE num_doc=?',[num_doc, tipo_doc, nombres,apellidos, correo_electronico, telefono, direccion, cod_usuario],(err,result)=>{
+        'UPDATE persona SET tipo_doc=?,nombres=?,apellidos=?,correo_electronico=?,telefono=?,direccion=?,cod_usuario=? WHERE num_doc=?',[tipo_doc, nombres,apellidos, correo_electronico, telefono, direccion, cod_usuario,num_doc],(err,result)=>{
             if(err){
                 console.log(err);
             }else{
