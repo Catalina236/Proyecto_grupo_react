@@ -1,0 +1,74 @@
+.App {
+  text-align: center;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Popins',sans-serif;
+}
+.card{
+  margin-top: 50px;
+  width: 71vw;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  background-size: cover;
+}
+
+.card-header{
+  font-size: calc(40px +  2vmin);
+  color: white;
+}
+
+.formulario{
+  background-color: white;
+  width: 50vw;
+  margin-left: 250px;
+  padding-left: 40px;
+  color: azure;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.btn-secondary{
+  margin-left: 20px;
+}
+
+.formulario h3{
+  color: beige;
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+  margin: 20px;
+}
+
+.formulario .info{
+  margin-bottom: 20px;
+}
+
+.info label{
+  display: block;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  font-size: 15px;
+}
+
+.info input{
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+  outline: none;
+  background-color: white;
+}
+
+.lista{
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
