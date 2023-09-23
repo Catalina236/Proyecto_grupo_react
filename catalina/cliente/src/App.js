@@ -47,6 +47,16 @@ function App() {
     });
 
   }
+  const editarUsuario=(val)=>{
+    setNumDoc(val.num_doc);
+    setTipo_doc(val.tipo_doc);
+    setNombres(val.nombres);
+    setApellidos(val.apellidos);
+    setEmail(val.correo_electronico);
+    setTelefono(val.telefono);
+    setDireccion(val.direccion);
+    setCodigo(val.cod_usuario);
+  }
 
   const clear=()=>{
     setNumDoc("");
@@ -231,6 +241,9 @@ function App() {
                 <td>{val.direccion}</td>
                 <td>{val.cod_usuario}</td>
               <td>
+                <div className='btn-group' role='group' aria-label='Basic example'>
+                  <button type="button" onClick={()=>{editarUsuario(val);}} className='btn btn-warning'>Actualizar</button>
+                </div>
                 <div className='btn_group' role='group' aria-label='Basic example'>
                   <button type='button' onClick={()=>{
                     Eliminar(val);
